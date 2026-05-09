@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import com.canvaclone.entity.Provider;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+// import org.springframework.security.oauth2.core.user.OAuth2User;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Collections;
@@ -28,6 +28,7 @@ public class UserService {
         return mapToResponse(user);
     }
 
+/*
     public User findOrCreateOAuthUser(OAuth2User oauthUser) {
         String email = oauthUser.getAttribute("email");
         String name = oauthUser.getAttribute("name");
@@ -66,6 +67,7 @@ public class UserService {
         user.setLastLoginAt(LocalDateTime.now());
         return userRepository.save(user);
     }
+*/
 
     public UserDto.UserResponse updateProfile(String email, UserDto.UpdateProfileRequest request) {
         User user = userRepository.findByEmail(email)

@@ -30,8 +30,8 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    @Autowired
-    private com.canvaclone.security.OAuth2SuccessHandler oAuth2SuccessHandler;
+//    @Autowired
+//    private com.canvaclone.security.OAuth2SuccessHandler oAuth2SuccessHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -43,10 +43,10 @@ public class SecurityConfig {
                         .requestMatchers("/api/images/files/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/designs/public", "/api/designs/{id:[0-9]+}").permitAll()
                         .anyRequest().authenticated())
-                .oauth2Login(oauth2 -> oauth2
-                        .authorizationEndpoint(authorization -> authorization
-                                .baseUri("/oauth2/authorize"))
-                        .successHandler(oAuth2SuccessHandler))
+//                .oauth2Login(oauth2 -> oauth2
+//                        .authorizationEndpoint(authorization -> authorization
+//                                .baseUri("/oauth2/authorize"))
+//                        .successHandler(oAuth2SuccessHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
