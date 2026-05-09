@@ -59,6 +59,7 @@ public class AuthService {
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .provider(com.canvaclone.entity.Provider.LOCAL)
                 .emailVerified(false)
                 .roles(Set.of("ROLE_USER"))
                 .build();

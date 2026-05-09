@@ -33,6 +33,7 @@ public class User {
     @Column
     private String name;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Provider provider = Provider.LOCAL;
@@ -40,8 +41,10 @@ public class User {
     private String googleId;
     private String avatarUrl;
     private LocalDateTime lastLoginAt;
+    @Builder.Default
     private boolean emailVerified = false;
 
+    @Builder.Default
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role")
